@@ -1445,3 +1445,451 @@
 
 
 @media only screen and (min-width: 1200px) and (max-width: 1470px) {}
+
+
+/*--------------------------------------------------------------
+# Supplemental Responsive Fixes
+# Patches gaps in the original media-query coverage so every
+# section degrades gracefully from large laptops down to small
+# phones. Each block targets a real overflow / clipping / stack
+# issue observed at that breakpoint.
+--------------------------------------------------------------*/
+
+
+/* Small laptops & narrow desktops: 1200px - 1319px */
+@media only screen and (min-width: 1200px) and (max-width: 1319px) {
+    .banner-one__title {
+        font-size: 64px;
+        line-height: 76px;
+    }
+
+    .main-slider__title {
+        font-size: 54px;
+        line-height: 64px;
+    }
+
+    .page-header__inner h2 {
+        font-size: 42px;
+        line-height: 50px;
+    }
+
+    .cta-one__title {
+        font-size: 40px;
+        line-height: 44px;
+    }
+
+    .contact-one__contact-list {
+        gap: 40px;
+    }
+
+    .counter-two__big-text > h3 {
+        font-size: 72px;
+        line-height: 78px;
+    }
+
+    .services-details__service-icon span {
+        font-size: 54px;
+    }
+}
+
+
+/* Medium screens (small laptops / large tablets): 992px - 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .banner-one__title {
+        font-size: 54px;
+        line-height: 64px;
+    }
+
+    .main-slider__title {
+        font-size: 46px;
+        line-height: 56px;
+    }
+
+    .section-title__title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .page-header__inner h2 {
+        font-size: 38px;
+        line-height: 46px;
+    }
+
+    .cta-one__title {
+        font-size: 34px;
+        line-height: 40px;
+    }
+
+    .cta-one__inner {
+        padding: 45px 30px 45px;
+    }
+
+    .contact-one {
+        padding: 90px 0 90px;
+    }
+
+    .contact-one__inner {
+        padding: 50px 30px 30px;
+    }
+
+    .contact-one__contact-list {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .counter-two__big-text > h3 {
+        font-size: 64px;
+        line-height: 70px;
+    }
+
+    .services-details {
+        padding: 100px 0 100px;
+    }
+
+    .services-details__service-icon span {
+        font-size: 50px;
+    }
+
+    .about-one__trusted-box {
+        left: 15px;
+        bottom: 15px;
+        padding: 22px 18px;
+    }
+
+    .google-map__one,
+    .google-map-two .google-map__one {
+        height: 460px;
+    }
+
+    .blog-page__title {
+        font-size: 32px;
+        line-height: 42px;
+    }
+}
+
+
+/* Tablet landscape / large tablet portrait: 768px - 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .banner-one__title {
+        font-size: 48px;
+        line-height: 58px;
+    }
+
+    .main-slider__title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .section-title__title {
+        font-size: 36px;
+        line-height: 46px;
+    }
+
+    .page-header__inner h2 {
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .cta-one__title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .cta-one__inner {
+        padding: 50px 30px 50px;
+    }
+
+    .contact-one {
+        padding: 80px 0 80px;
+    }
+
+    .contact-one__inner {
+        padding: 40px 25px 25px;
+    }
+
+    .contact-one__contact-list {
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contact-one__contact-list li {
+        flex: 0 0 calc(50% - 25px);
+    }
+
+    .counter-two__big-text > h3 {
+        font-size: 56px;
+        line-height: 62px;
+    }
+
+    .services-details {
+        padding: 90px 0 90px;
+    }
+
+    .services-details__service-icon span {
+        font-size: 48px;
+    }
+
+    .services-details__service-single {
+        margin-bottom: 30px;
+    }
+
+    .about-one__trusted-box {
+        left: 15px;
+        bottom: 15px;
+        padding: 20px 16px;
+        gap: 12px;
+    }
+
+    .google-map__one,
+    .google-map-two .google-map__one {
+        height: 420px;
+    }
+
+    .blog-page__title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .team-details-info__inner {
+        padding: 60px 20px 0;
+    }
+}
+
+
+/* Mobile (all phones): max-width 767px - supplemental fixes */
+@media only screen and (max-width: 767px) {
+    .banner-one__title {
+        font-size: 36px;
+        line-height: 46px;
+    }
+
+    .main-slider__title {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .page-header {
+        padding: 80px 0 80px;
+    }
+
+    .page-header__inner h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .cta-one__title {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .cta-one__inner {
+        padding: 40px 18px 40px;
+    }
+
+    .cta-one__contact-box {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .contact-one {
+        padding: 70px 0 70px;
+    }
+
+    .contact-one__inner {
+        padding: 35px 18px 18px;
+    }
+
+    .contact-one__contact-list {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .contact-one__contact-list li {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .contact-one__contact-list li .content {
+        margin-left: 15px;
+    }
+
+    .contact-one__contact-list li .content h3 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .counter-two__big-text > h3 {
+        font-size: 44px;
+        line-height: 52px;
+    }
+
+    .services-details {
+        padding: 70px 0 70px;
+    }
+
+    .services-details__service-icon span {
+        font-size: 44px;
+    }
+
+    .services-details__service-single {
+        margin-bottom: 25px;
+    }
+
+    .services-details__service-title,
+    .services-details__service-title a {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .about-one__trusted-box {
+        position: relative;
+        left: 0;
+        bottom: 0;
+        margin-top: 18px;
+        padding: 22px 16px;
+        gap: 12px;
+    }
+
+    .google-map__one,
+    .google-map-two .google-map__one {
+        height: 340px;
+    }
+
+    .team-one__title,
+    .blog-one__title {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .blog-page__title {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .footer-widget__about,
+    .footer-widget__company,
+    .footer-widget__services,
+    .footer-widget__newsletter,
+    .footer-widget-two__about,
+    .footer-widget-two__services,
+    .footer-widget-two__contact {
+        padding-right: 0;
+    }
+
+    img,
+    iframe,
+    video {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+/* Small phones: max-width 480px - final tightening for SE-sized phones */
+@media only screen and (max-width: 480px) {
+    .banner-one__title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .main-slider__title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .section-title__title {
+        font-size: 22px;
+        line-height: 32px;
+    }
+
+    .page-header__inner h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .cta-one__title {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .cta-one__inner {
+        padding: 32px 14px 32px;
+    }
+
+    .contact-one,
+    .services-details,
+    .page-header {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .contact-one__inner {
+        padding: 28px 14px 14px;
+    }
+
+    .contact-one__contact-list li .icon {
+        width: 54px;
+        height: 54px;
+    }
+
+    .contact-one__contact-list li .icon > span {
+        font-size: 20px;
+    }
+
+    .contact-one__contact-list li .content h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .services-details__service-icon span {
+        font-size: 38px;
+    }
+
+    .services-details__service-title,
+    .services-details__service-title a {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .counter-two__big-text > h3 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+
+    .why-choose-two__big-text {
+        font-size: 44px;
+        line-height: 46px;
+    }
+
+    .google-map__one,
+    .google-map-two .google-map__one {
+        height: 280px;
+    }
+
+    .main-slider .container {
+        padding-top: 150px;
+        padding-bottom: 160px;
+    }
+
+    .thm-btn,
+    .form-inner__btn {
+        padding: 12px 22px;
+        font-size: 14px;
+    }
+
+    .footer-widget__logo img,
+    .main-menu__logo img {
+        max-height: 36px;
+        width: auto;
+    }
+}
+
+
+/* Prevent any wide hero / banner background or off-canvas element
+   from forcing a horizontal scrollbar on the page. */
+html,
+body {
+    overflow-x: hidden;
+}
