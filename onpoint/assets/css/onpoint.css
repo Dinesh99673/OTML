@@ -2422,7 +2422,7 @@ ul {
 .services-one {
   position: relative;
   display: block;
-  padding: 120px 0 50px;
+  padding: 120px 0 220px;
   z-index: 1;
 }
 
@@ -2615,7 +2615,7 @@ ul {
 .project-one {
   position: relative;
   display: block;
-  padding: 120px 0 110px;
+  padding: 120px 0 200px;
   z-index: 1;
 }
 
@@ -3407,7 +3407,7 @@ ul {
 .why-are-we {
   position: relative;
   display: block;
-  padding: 0 0 120px;
+  padding: 0 0 200px;
   z-index: 1;
 }
 
@@ -5998,7 +5998,7 @@ ul {
 .contact-two {
   position: relative;
   display: block;
-  padding: 0 0 120px;
+  padding: 0 0 200px;
   z-index: 1;
 }
 
@@ -6106,7 +6106,7 @@ ul {
 .blog-details {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 120px 0 200px;
   z-index: 1;
 }
 
@@ -6711,7 +6711,7 @@ ul {
 .blog-page {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 120px 0 200px;
   z-index: 1;
 }
 
@@ -7176,7 +7176,7 @@ ul {
 .services-details {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 120px 0 200px;
   z-index: 1;
 }
 
@@ -7654,7 +7654,7 @@ ul {
 .services-page {
   position: relative;
   display: block;
-  padding: 160px 0 50px;
+  padding: 160px 0 220px;
 }
 
 /*--------------------------------------------------------------
@@ -7663,7 +7663,7 @@ ul {
 .team-page {
   position: relative;
   display: block;
-  padding: 120px 0 90px;
+  padding: 120px 0 200px;
 }
 
 .team-page .team-one__single {
@@ -7676,7 +7676,7 @@ ul {
 .team-details-info {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 120px 0 200px;
   z-index: 1;
 }
 
@@ -8035,7 +8035,7 @@ ul {
 .testimonials-page {
   position: relative;
   display: block;
-  padding: 120px 0 90px;
+  padding: 120px 0 200px;
 }
 
 .testimonials-page .testimonial-one__single {
@@ -8059,7 +8059,7 @@ ul {
 .error-page {
   position: relative;
   display: block;
-  padding: 42px 0 120px;
+  padding: 42px 0 200px;
   z-index: 1;
 }
 
