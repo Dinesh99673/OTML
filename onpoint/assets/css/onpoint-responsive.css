@@ -952,6 +952,11 @@
         margin: 0 0px 0;
     }
 
+    .page-header__bg,
+    .page-header__bg::before {
+        border-radius: 20px;
+    }
+
     .page-header__inner h2 {
         font-size: 30px;
         line-height: 40px;
@@ -1319,15 +1324,29 @@
 @media only screen and (max-width: 767px) {
     .main-slider {
         margin: 0 0px;
+        border-radius: 20px;
+    }
+
+    .main-slider__sub-title {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0.8px;
     }
 
     .main-slider__title {
         font-size: 30px;
         line-height: 40px;
+        margin-bottom: 16px;
     }
 
     .main-slider__title span:before {
         bottom: 4px;
+        height: 4px;
+    }
+
+    .main-slider__text {
+        font-size: 16px;
+        line-height: 24px;
     }
 
     .main-slider__text br {
@@ -1336,7 +1355,14 @@
 
     .main-slider__btn-and-call-box {
         flex-direction: column;
-        align-items: baseline;
+        align-items: flex-start;
+        gap: 20px;
+        margin-top: 28px;
+    }
+
+    .main-slider__btn {
+        padding: 6px 20px 6px;
+        padding-right: 4px;
     }
 
     #main-slider-pagination {
@@ -1344,8 +1370,16 @@
     }
 
     .main-slider .container {
-        padding-top: 194px;
-        padding-bottom: 200px;
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+
+    .main-slider__shape-1,
+    .main-slider__shape-2,
+    .main-slider__shape-3,
+    .main-slider__shape-4 {
+        filter: blur(90px);
+        opacity: 0.4;
     }
 
 
@@ -2002,8 +2036,46 @@
     }
 
     .main-slider .container {
-        padding-top: 150px;
-        padding-bottom: 160px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .main-slider {
+        border-radius: 16px;
+    }
+
+    .main-slider__sub-title {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .main-slider__title {
+        margin-top: 4px;
+        margin-bottom: 12px;
+    }
+
+    .main-slider__text {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .main-slider__btn-and-call-box {
+        margin-top: 22px;
+        gap: 16px;
+    }
+
+    .main-slider__call-number h5 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .page-header {
+        margin: 0 0 0;
+    }
+
+    .page-header__bg,
+    .page-header__bg::before {
+        border-radius: 16px;
     }
 
     .thm-btn,
