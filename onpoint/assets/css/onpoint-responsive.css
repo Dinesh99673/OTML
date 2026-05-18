@@ -1555,7 +1555,7 @@
     }
 
     .services-details__service-icon span {
-        font-size: 54px;
+        font-size: 40px;
     }
 }
 
@@ -1614,7 +1614,7 @@
     }
 
     .services-details__service-icon span {
-        font-size: 50px;
+        font-size: 36px;
     }
 
     .about-one__trusted-box {
@@ -1694,11 +1694,11 @@
     }
 
     .services-details__service-icon span {
-        font-size: 48px;
+        font-size: 34px;
     }
 
     .services-details__service-single {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
     .about-one__trusted-box {
@@ -1802,17 +1802,17 @@
     }
 
     .services-details__service-icon span {
-        font-size: 44px;
+        font-size: 32px;
     }
 
     .services-details__service-single {
-        margin-bottom: 25px;
+        margin-bottom: 18px;
     }
 
     .services-details__service-title,
     .services-details__service-title a {
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 17px;
+        line-height: 24px;
     }
 
     .services-one {
@@ -1977,13 +1977,13 @@
     }
 
     .services-details__service-icon span {
-        font-size: 38px;
+        font-size: 28px;
     }
 
     .services-details__service-title,
     .services-details__service-title a {
-        font-size: 18px;
-        line-height: 26px;
+        font-size: 16px;
+        line-height: 24px;
     }
 
     .counter-two__big-text > h3 {
