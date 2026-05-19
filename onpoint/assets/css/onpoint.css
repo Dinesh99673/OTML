@@ -24,12 +24,12 @@
   --onpoint-gray-rgb: 120, 120, 120;
   --onpoint-white: #ffffff;
   --onpoint-white-rgb: 255, 255, 255;
-  --onpoint-base: #C11425;
-  --onpoint-base-rgb: 193, 20, 37;
+  --onpoint-base: #133465;
+  --onpoint-base-rgb: 19, 52, 101;
   --onpoint-black: #0F1B24;
   --onpoint-black-rgb: 15, 27, 36;
-  --onpoint-primary: #FFC000;
-  --onpoint-primary-rgb: 255, 192, 0;
+  --onpoint-primary: #fffafa;
+  --onpoint-primary-rgb: 255, 250, 250;
   --onpoint-extra: #F5F5F5;
   --onpoint-extra-rgb: 245, 245, 245;
   --onpoint-bdr-color: #CCCCCC;
@@ -405,8 +405,8 @@ ul {
 /* scroll to top */
 .scroll-to-top {
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 42px;
+  height: 42px;
   background: var(--onpoint-black);
   position: fixed;
   bottom: 50px;
@@ -416,13 +416,13 @@ ul {
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
   display: none;
-  border-radius: 0;
+  border-radius: 50%;
 }
 
 .scroll-to-top i {
   color: var(--onpoint-white);
-  font-size: 18px;
-  line-height: 60px;
+  font-size: 14px;
+  line-height: 42px;
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
