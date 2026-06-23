@@ -16,6 +16,7 @@
 
 8\. **Industries Served** : change the images according to their heading like Pharmaceuticals then images should be related to pharma.
 
+12\. Add thane address in contact us .
 
 
 
@@ -23,7 +24,6 @@
 
 **11. For Agriculture and commodities you can refer http://strawcommodities.com/ (This is just for your reference.)**
 
-12\. Add thane address in contact us .
 
 
 
