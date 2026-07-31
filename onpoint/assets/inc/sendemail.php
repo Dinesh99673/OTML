@@ -1,17 +1,22 @@
 <?php
 
 // Define Host Info || Who is sending emails?
-define("HOST_NAME", "Poitech Mailer");
-define("HOST_EMAIL", "poitech@mail.com");
+define("HOST_NAME", "OTML INC Website");
+define("HOST_EMAIL", "sales@otmlinc.com");
 
-// Define SMTP Credentials || Gmail Informations
+// Define SMTP Credentials
+// TODO: replace with the real mailbox credentials before going live -- until these are
+// set the form will fail with an SMTP authentication error.
 define("SMTP_EMAIL", "mail@gmail.com");
 define("SMTP_PASSWORD", "your_gmail_pass"); // read documentations
 
 
-// Define Recipent Info ||  Who will get this email?
-define("RECIPIENT_NAME", "John Doe");
-define("RECIPIENT_EMAIL", "jhon@mail.com");
+// Define Recipient Info || Who will get this email?
+// Every enquiry submitted anywhere on the site is delivered to both inboxes.
+$RECIPIENTS = array(
+	"sales@otmlinc.com"                => "OTML INC Sales",
+	"pricing@onthemovelogistics.co.in" => "OTML INC Pricing",
+);
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -42,7 +47,9 @@ try {
 
 	//Recipients
 	$mail->setFrom(HOST_EMAIL, HOST_NAME);
-	$mail->addAddress(RECIPIENT_EMAIL, RECIPIENT_NAME);     //Add a recipient
+	foreach ($RECIPIENTS as $recipientEmail => $recipientName) {
+		$mail->addAddress($recipientEmail, $recipientName);
+	}
 
 	//Content
 	$name = isset($_POST['name']) ? preg_replace("/[^\.\-\' a-zA-Z0-9]/", "", $_POST['name']) : "";
