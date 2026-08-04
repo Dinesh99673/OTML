@@ -6030,7 +6030,7 @@ ul {
 .contact-two__input-box {
   position: relative;
   display: block;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .contact-two__label {
@@ -6043,7 +6043,7 @@ ul {
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: var(--onpoint-black);
-  margin-bottom: 9px;
+  margin-bottom: 7px;
 }
 
 .contact-two__label span {
@@ -6056,7 +6056,7 @@ ul {
 .contact-two__input-box input[type="tel"],
 .contact-two__input-box textarea {
   position: relative;
-  height: 58px;
+  height: 54px;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
@@ -6075,9 +6075,9 @@ ul {
 }
 
 .contact-two__input-box textarea {
-  height: 150px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  height: 128px;
+  padding-top: 14px;
+  padding-bottom: 14px;
   resize: vertical;
 }
 
@@ -6206,6 +6206,177 @@ ul {
 .contact-two__img img {
   width: 100%;
   border-radius: 20px;
+}
+
+/*--------------------------------------------------------------
+# Quote Aside (freight quote page)
+--------------------------------------------------------------*/
+.quote-aside {
+  position: relative;
+  display: block;
+  margin-top: 74px;
+}
+
+.quote-aside__img {
+  position: relative;
+  display: block;
+}
+
+.quote-aside__img img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.quote-aside__card {
+  position: relative;
+  display: block;
+  background-color: var(--onpoint-white);
+  border: 1px solid #E9ECF1;
+  border-radius: 20px;
+  padding: 30px 30px 28px;
+  margin-top: 18px;
+  -webkit-box-shadow: 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
+  box-shadow: 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
+}
+
+.quote-aside__title {
+  font-family: var(--onpoint-font-two);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30px;
+  color: var(--onpoint-black);
+  margin: 0 0 18px;
+}
+
+.quote-aside__list li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid #EEF0F4;
+}
+
+.quote-aside__list li:first-child {
+  padding-top: 0;
+}
+
+.quote-aside__list li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.quote-aside__list li .icon {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--onpoint-base);
+  background-color: rgba(var(--onpoint-base-rgb), .08);
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+.quote-aside__list li:hover .icon {
+  color: var(--onpoint-white);
+  background-color: var(--onpoint-base);
+}
+
+.quote-aside__list li .content h4 {
+  font-family: var(--onpoint-font-two);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--onpoint-black);
+  margin: 0 0 3px;
+}
+
+.quote-aside__list li .content p {
+  font-size: 15px;
+  line-height: 26px;
+  color: var(--onpoint-gray);
+  margin: 0;
+}
+
+.quote-aside__list li .content p>a {
+  color: var(--onpoint-gray);
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+}
+
+.quote-aside__list li .content p>a:hover {
+  color: var(--onpoint-base);
+}
+
+.quote-aside__card--steps {
+  background-color: var(--onpoint-base);
+  border-color: var(--onpoint-base);
+}
+
+.quote-aside__card--steps .quote-aside__title {
+  color: var(--onpoint-white);
+}
+
+.quote-aside__steps li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 18px;
+}
+
+.quote-aside__steps li:last-child {
+  padding-bottom: 0;
+}
+
+.quote-aside__steps li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 42px;
+  bottom: 14px;
+  width: 1px;
+  background-color: rgba(var(--onpoint-white-rgb), .22);
+}
+
+.quote-aside__step-no {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  font-family: var(--onpoint-font-two);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--onpoint-white);
+  background-color: rgba(var(--onpoint-white-rgb), .16);
+}
+
+.quote-aside__steps li p {
+  font-size: 15px;
+  line-height: 26px;
+  color: rgba(var(--onpoint-white-rgb), .80);
+  margin: 0;
+}
+
+@media only screen and (max-width: 1199px) {
+  .quote-aside {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .quote-aside__card {
+    padding: 26px 22px 24px;
+  }
 }
 
 /*--------------------------------------------------------------
