@@ -755,6 +755,11 @@ ul {
   padding: 15px 0;
 }
 
+/* keeps the header balanced on pages that have no menu button after the icon */
+.main-menu__search-nav-sidebar-btn-box .main-menu__nav-sidebar-icon:last-child {
+  margin-right: 0;
+}
+
 .main-menu__nav-sidebar-icon .navSidebar-button {
   position: relative;
   display: flex;
@@ -6025,55 +6030,165 @@ ul {
 .contact-two__input-box {
   position: relative;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+}
+
+.contact-two__label {
+  position: relative;
+  display: block;
+  font-family: var(--onpoint-font-two);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--onpoint-black);
+  margin-bottom: 9px;
+}
+
+.contact-two__label span {
+  color: #E03131;
+  margin-left: 3px;
 }
 
 .contact-two__input-box input[type="text"],
-.contact-two__input-box input[type="email"] {
-  height: 67px;
+.contact-two__input-box input[type="email"],
+.contact-two__input-box input[type="tel"],
+.contact-two__input-box textarea {
+  position: relative;
+  height: 58px;
   width: 100%;
   padding-left: 20px;
   padding-right: 20px;
   outline: none;
-  font-size: 18px;
-  color: var(--onpoint-gray);
+  font-family: var(--onpoint-font);
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--onpoint-black);
   display: block;
   font-weight: 400;
-  border-radius: 5px;
-  background-color: transparent;
-  border: 1px solid var(--onpoint-bdr-color);
+  border-radius: 8px;
+  background-color: #F6F7F9;
+  border: 1px solid #E2E5EA;
+  -webkit-transition: border-color 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
 }
 
 .contact-two__input-box textarea {
+  height: 150px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  resize: vertical;
+}
+
+.contact-two__input-box input::-webkit-input-placeholder,
+.contact-two__input-box textarea::-webkit-input-placeholder {
+  color: rgba(var(--onpoint-gray-rgb), .90);
+  font-size: 15px;
+}
+
+.contact-two__input-box input::placeholder,
+.contact-two__input-box textarea::placeholder {
+  color: rgba(var(--onpoint-gray-rgb), .90);
+  font-size: 15px;
+}
+
+.contact-two__input-box input:hover,
+.contact-two__input-box textarea:hover {
+  border-color: rgba(var(--onpoint-base-rgb), .40);
+}
+
+.contact-two__input-box input:focus,
+.contact-two__input-box textarea:focus {
+  background-color: var(--onpoint-white);
+  border-color: var(--onpoint-base);
+  -webkit-box-shadow: 0 0 0 3px rgba(var(--onpoint-base-rgb), .12);
+  box-shadow: 0 0 0 3px rgba(var(--onpoint-base-rgb), .12);
+}
+
+.contact-two__form input.error,
+.contact-two__form textarea.error {
+  border-color: #E03131;
+  background-color: rgba(224, 49, 49, .04);
+}
+
+.contact-two__form input.error:focus,
+.contact-two__form textarea.error:focus {
+  border-color: #E03131;
+  -webkit-box-shadow: 0 0 0 3px rgba(224, 49, 49, .12);
+  box-shadow: 0 0 0 3px rgba(224, 49, 49, .12);
+}
+
+.contact-two__form label.error {
   position: relative;
-  height: 130px;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-  outline: none;
-  font-size: 14px;
-  color: var(--onpoint-gray);
   display: block;
-  font-weight: 400;
-  border-radius: 5px;
-  background-color: transparent;
-  border: 1px solid var(--onpoint-bdr-color);
+  font-family: var(--onpoint-font);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #E03131;
+  margin: 7px 0 0;
 }
 
 .contact-two__btn-box {
   position: relative;
   display: block;
+  margin-top: 8px;
 }
 
 .contact-two__btn {
   border: none;
-  color: var(--onpoint-black);
-  background-color: var(--onpoint-primary);
+  cursor: pointer;
+  color: var(--onpoint-white);
+  background-color: var(--onpoint-base);
+  padding: 5px 30px 5px;
+  padding-right: 5px;
+  -webkit-box-shadow: 0 10px 24px rgba(var(--onpoint-base-rgb), .22);
+  box-shadow: 0 10px 24px rgba(var(--onpoint-base-rgb), .22);
 }
 
 .contact-two__btn>span {
-  background-color: rgba(var(--onpoint-white-rgb), .30);
+  background-color: rgba(var(--onpoint-white-rgb), .20);
+}
+
+.contact-two__btn:hover {
+  color: var(--onpoint-white);
+  -webkit-box-shadow: 0 12px 28px rgba(var(--onpoint-black-rgb), .28);
+  box-shadow: 0 12px 28px rgba(var(--onpoint-black-rgb), .28);
+}
+
+.contact-two__left .result .inner {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  padding: 16px 22px;
+  margin-top: 22px;
+}
+
+.contact-two__left .result .inner p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.contact-two__left .result .inner.success {
+  background-color: rgba(25, 135, 84, .08);
+  border: 1px solid rgba(25, 135, 84, .35);
+}
+
+.contact-two__left .result .inner.success p {
+  color: #14683F;
+}
+
+.contact-two__left .result .inner.error {
+  background-color: rgba(224, 49, 49, .06);
+  border: 1px solid rgba(224, 49, 49, .35);
+}
+
+.contact-two__left .result .inner.error p {
+  color: #C22626;
 }
 
 .contact-two__right {
