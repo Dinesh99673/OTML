@@ -75,7 +75,7 @@
                             </div>
                             <div class="form-inner">
                                 <h4>Get a free quote</h4>
-                                <form action="assets/inc/sendemail.php" class="contact-form-validated"
+                                <form action="assets/inc/sendemail.php" class="contact-form-validated" data-form-name="Free Quote Request"
                                     novalidate="novalidate">
                                     <div class="form-group">
                                         <input type="text" name="name" placeholder="Name" required="">
@@ -241,7 +241,7 @@
                         <div class="faq-one__right wow fadeInRight" data-wow-delay="300ms">
                             <h3 class="faq-one__from-title">Our One-Stop Car Repair Shop</h3>
                             <form class="contact-form-validated faq-one__form" action="assets/inc/sendemail.php"
-                                method="post" novalidate="novalidate">
+                                method="post" novalidate="novalidate" data-form-name="Website Enquiry">
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6">
                                         <div class="faq-one__input-box">
@@ -255,20 +255,21 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
                                         <div class="faq-one__input-box">
-                                            <input type="text" name="text" placeholder="Phone Number" required="">
+                                            <input type="tel" name="phone" placeholder="Phone Number" required="">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
                                         <div class="faq-one__input-box">
                                             <div class="select-box">
-                                                <select class="selectmenu wide">
-                                                    <option selected="selected">Choose a Option</option>
-                                                    <option>Type Of Service 01</option>
-                                                    <option>Type Of Service 02</option>
-                                                    <option>Type Of Service 03</option>
-                                                    <option>Type Of Service 04</option>
-                                                    <option>Type Of Service 05</option>
-                                                    <option>Type Of Service 06</option>
+                                                <select class="selectmenu wide" name="service">
+                                                    <option value="" selected="selected">Choose a Service</option>
+                                                    <option>Ocean Freight</option>
+                                                    <option>Specialist for USA (DDP / DDU)</option>
+                                                    <option>Air Freight</option>
+                                                    <option>Trucking Services</option>
+                                                    <option>Warehousing &amp; Distribution</option>
+                                                    <option>Customs Broking</option>
+                                                    <option>Agro Commodities</option>
                                                 </select>
                                             </div>
                                         </div>

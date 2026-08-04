@@ -277,6 +277,113 @@
   }
 
 
+  // Mailer endpoint every contact / quote form on the site posts to.
+  var MAILER_API_URL = "https://api.rabbitship.in/api/mailer/send";
+
+  // Field name -> label used in the body of the email the office receives.
+  var MAILER_FIELD_LABELS = {
+    name: "Name",
+    email: "Email",
+    phone: "Phone",
+    websubject: "Subject",
+    service: "Service Required",
+    location: "Start Location",
+    destination: "Destination",
+    consignment: "Consignment Details",
+    website: "Website",
+    message: "Message"
+  };
+
+  // The API needs these three on every form, whatever the markup says.
+  var MAILER_REQUIRED_FIELDS = ["name", "email", "message"];
+
+  function escapeHtml(value) {
+    return $("<div>").text(value).html();
+  }
+
+  // Reads every named control on the form, in the order it appears in the markup.
+  function readMailerFields(form) {
+    var fields = [];
+
+    $(form).find("input, select, textarea").each(function () {
+      var input = $(this);
+      var name = input.attr("name");
+      var type = (input.attr("type") || "").toLowerCase();
+
+      if (!name || type === "submit" || type === "button" || type === "hidden") {
+        return;
+      }
+
+      fields.push({
+        name: name,
+        label: MAILER_FIELD_LABELS[name] || name,
+        value: $.trim(input.val() || ""),
+        required: input.is("[required]")
+      });
+    });
+
+    return fields;
+  }
+
+  function findMailerField(fields, name) {
+    for (var i = 0; i < fields.length; i++) {
+      if (fields[i].name === name) {
+        return fields[i];
+      }
+    }
+    return null;
+  }
+
+  // Returns the first field that has to be filled but isn't, so the caller can
+  // bail out before touching the API.
+  function firstEmptyMailerField(fields) {
+    for (var i = 0; i < MAILER_REQUIRED_FIELDS.length; i++) {
+      var name = MAILER_REQUIRED_FIELDS[i];
+      var field = findMailerField(fields, name);
+
+      if (!field || !field.value) {
+        return field || { name: name, label: MAILER_FIELD_LABELS[name] || name };
+      }
+    }
+
+    for (var j = 0; j < fields.length; j++) {
+      if (fields[j].required && !fields[j].value) {
+        return fields[j];
+      }
+    }
+
+    return null;
+  }
+
+  // Puts every filled field into the body, so the enquiry carries whatever the
+  // form that sent it asked for. The free-text message stays last, as a block.
+  function buildMailerMessage(formName, fields) {
+    var lines = [
+      "Enquiry type: " + formName,
+      "Submitted from: " + window.location.href,
+      ""
+    ];
+
+    $.each(fields, function (index, field) {
+      if (field.name !== "message" && field.value) {
+        lines.push(field.label + ": " + field.value);
+      }
+    });
+
+    var message = findMailerField(fields, "message");
+    if (message && message.value) {
+      lines.push("", "Message:", message.value);
+    }
+
+    return lines.join("\n");
+  }
+
+  function showMailerResult(resultBox, state, text) {
+    resultBox.html(
+      '<div class="inner ' + state + '"><p class="' + state + '">' + escapeHtml(text) + "</p></div>"
+    );
+  }
+
   if ($(".contact-form-validated").length) {
     $(".contact-form-validated").each(function () {
       let self = $(this);
@@ -298,18 +405,62 @@
           }
         },
         submitHandler: function (form) {
-          // sending value with ajax request
-          $.post(
-            $(form).attr("action"),
-            $(form).serialize(),
-            function (response) {
-              $(form).parent().find(".result").append(response);
-              $(form).find('input[type="text"]').val("");
-              $(form).find('input[type="email"]').val("");
-              $(form).find('input[type="tel"]').val("");
-              $(form).find("textarea").val("");
-            }
-          );
+          var thisForm = $(form);
+          var resultBox = thisForm.parent().find(".result");
+          var submitBtn = thisForm.find('[type="submit"]');
+          var formName = thisForm.data("form-name") || "Website Enquiry";
+          var fields = readMailerFields(form);
+
+          // Never call the API with an incomplete enquiry.
+          var emptyField = firstEmptyMailerField(fields);
+          if (emptyField) {
+            showMailerResult(
+              resultBox,
+              "error",
+              "Please fill in the " + emptyField.label + " field before submitting."
+            );
+            thisForm.find('[name="' + emptyField.name + '"]').trigger("focus");
+            return false;
+          }
+
+          var payload = {
+            subject: formName + " from " + findMailerField(fields, "name").value,
+            email: findMailerField(fields, "email").value,
+            message: buildMailerMessage(formName, fields)
+          };
+
+          submitBtn.prop("disabled", true);
+          showMailerResult(resultBox, "sending", "Sending your enquiry…");
+
+          $.ajax({
+            url: MAILER_API_URL,
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(payload)
+          })
+            .done(function () {
+              showMailerResult(
+                resultBox,
+                "success",
+                "Thanks for contacting us. Our team will get back to you shortly."
+              );
+              form.reset();
+              // the styled dropdown keeps the old label unless it is told to refresh
+              if ($.fn.niceSelect) {
+                thisForm.find("select").niceSelect("update");
+              }
+            })
+            .fail(function () {
+              showMailerResult(
+                resultBox,
+                "error",
+                "Sorry, your enquiry could not be sent. Please try again, or email us at sales@otmlinc.com."
+              );
+            })
+            .always(function () {
+              submitBtn.prop("disabled", false);
+            });
+
           return false;
         }
       });

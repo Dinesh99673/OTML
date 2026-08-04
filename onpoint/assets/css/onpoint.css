@@ -2620,8 +2620,15 @@ ul {
 .project-one {
   position: relative;
   display: block;
+  /* the bottom padding leaves room for a following .cta-green,
+     which pulls itself up by -153px */
   padding: 120px 0 200px;
   z-index: 1;
+}
+
+/* for pages where nothing overlaps the section from below */
+.project-one--tight {
+  padding-bottom: 120px;
 }
 
 .project-one .container {
@@ -2648,6 +2655,9 @@ ul {
   display: block;
   overflow: hidden;
   border-radius: 20px;
+  /* fixed tile ratio so every card is the same height,
+     whatever the source image dimensions are */
+  padding-top: 75%;
 }
 
 .project-one__img:after {
@@ -2669,7 +2679,12 @@ ul {
 }
 
 .project-one__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 20px;
   transform: scale(1.01);
   transition: transform .5s cubic-bezier(.27, .48, .45, .94);
@@ -2724,6 +2739,47 @@ ul {
 
 .project-one__title a:hover {
   color: var(--onpoint-base);
+}
+
+/* the caption is hover-revealed, so keep it permanently visible
+   anywhere there is no hover (phones, tablets) */
+@media (hover: none) {
+
+  .project-one__content,
+  .project-one__single:hover .project-one__content {
+    transform: none;
+    opacity: 1;
+  }
+
+  .project-one__img:after {
+    opacity: .25;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .project-one__content {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px 20px 15px;
+  }
+
+  .project-one__title {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .project-one__sub-title {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .project-one__title {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -6157,6 +6213,48 @@ ul {
   color: var(--onpoint-white);
   -webkit-box-shadow: 0 12px 28px rgba(var(--onpoint-black-rgb), .28);
   box-shadow: 0 12px 28px rgba(var(--onpoint-black-rgb), .28);
+}
+
+/* form feedback -- shared by every contact / quote form on the site */
+.result .inner {
+  position: relative;
+  display: block;
+  border-radius: 8px;
+  padding: 16px 22px;
+  margin-top: 22px;
+}
+
+.result .inner p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.result .inner.sending {
+  background-color: rgba(var(--onpoint-black-rgb), .04);
+  border: 1px solid rgba(var(--onpoint-black-rgb), .18);
+}
+
+.result .inner.sending p {
+  color: var(--onpoint-gray);
+}
+
+.result .inner.success {
+  background-color: rgba(25, 135, 84, .08);
+  border: 1px solid rgba(25, 135, 84, .35);
+}
+
+.result .inner.success p {
+  color: #14683F;
+}
+
+.result .inner.error {
+  background-color: rgba(224, 49, 49, .06);
+  border: 1px solid rgba(224, 49, 49, .35);
+}
+
+.result .inner.error p {
+  color: #C22626;
 }
 
 .contact-two__left .result .inner {
