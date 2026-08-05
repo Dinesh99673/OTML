@@ -3050,6 +3050,25 @@ ul {
   font-family: var(--onpoint-font-two);
 }
 
+.about-one__video {
+  position: relative;
+  display: block;
+  margin-top: 30px;
+}
+
+.about-one__video img {
+  width: 100%;
+  border-radius: 50px;
+}
+
+.about-one__video-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 1;
+}
+
 .about-one__trust-text {
   font-size: 15px;
   font-weight: 700;
@@ -3284,6 +3303,25 @@ ul {
 .counter-one__count-text {
   color: var(--onpoint-black);
   margin-top: 10px;
+}
+
+.counter-one--wide .counter-one__right {
+  padding: 90px 60px 90px;
+}
+
+.counter-one--wide .counter-one__right .section-title__title,
+.counter-one--wide .counter-one__right-text {
+  max-width: 760px;
+}
+
+.counter-one--wide .counter-one__count-list {
+  gap: 30px;
+}
+
+.counter-one--wide .counter-one__count-list li {
+  flex: 1 1 0;
+  max-width: none;
+  padding-right: 20px;
 }
 
 /*--------------------------------------------------------------
@@ -3798,7 +3836,8 @@ ul {
 }
 
 .faq-one__input-box input[type="text"],
-.faq-one__input-box input[type="email"] {
+.faq-one__input-box input[type="email"],
+.faq-one__input-box input[type="tel"] {
   height: 67px;
   width: 100%;
   border: none;

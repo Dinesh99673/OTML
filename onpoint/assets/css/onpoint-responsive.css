@@ -2098,3 +2098,55 @@ html,
 body {
     overflow-x: hidden;
 }
+
+
+/*--------------------------------------------------------------
+# Counter One - full width variant (.counter-one--wide)
+# The video moved up into the About section, so this panel spans
+# the whole container. Rein the padding and the counter row back
+# in as the viewport narrows.
+--------------------------------------------------------------*/
+@media only screen and (min-width: 992px) and (max-width: 1319px) {
+    .counter-one--wide .counter-one__right {
+        padding: 70px 40px;
+    }
+
+    .counter-one--wide .counter-one__count-list {
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .about-one__video {
+        margin-top: 25px;
+    }
+
+    .about-one__video img {
+        border-radius: 30px;
+    }
+
+    .counter-one--wide .counter-one__right {
+        padding: 60px 30px;
+    }
+
+    .counter-one--wide .counter-one__count-list li {
+        flex: 1 1 240px;
+        max-width: calc(50% - 15px);
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .counter-one--wide .counter-one__right {
+        padding: 60px 20px;
+    }
+
+    .counter-one--wide .counter-one__count-list {
+        gap: 20px;
+    }
+
+    .counter-one--wide .counter-one__count-list li {
+        flex: 0 0 auto;
+        max-width: 100%;
+        padding: 16px 16px 18px;
+    }
+}
