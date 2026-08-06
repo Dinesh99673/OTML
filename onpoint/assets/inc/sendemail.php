@@ -14,7 +14,8 @@ define("SMTP_PASSWORD", "your_gmail_pass"); // read documentations
 // Define Recipient Info || Who will get this email?
 // Every enquiry submitted anywhere on the site is delivered to both inboxes.
 $RECIPIENTS = array(
-	"dc7821836954@gmail.com" => "OTML INC Pricing",
+	"sales@otmlinc.com"                => "OTML INC Sales",
+	"pricing@onthemovelogistics.co.in" => "OTML INC Pricing",
 );
 
 
