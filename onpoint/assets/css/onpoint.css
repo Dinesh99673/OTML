@@ -6254,6 +6254,298 @@ ul {
   box-shadow: 0 12px 28px rgba(var(--onpoint-black-rgb), .28);
 }
 
+/* captcha -- injected above the submit button of every contact / quote form */
+.form-captcha {
+  position: relative;
+  display: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-captcha.is-visible {
+  display: block;
+}
+
+.form-captcha__label {
+  position: relative;
+  display: block;
+  font-family: var(--onpoint-font-two);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--onpoint-black);
+  margin-bottom: 7px;
+}
+
+.form-captcha__label span {
+  color: #E03131;
+  margin-left: 3px;
+}
+
+.form-captcha__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-captcha__cell {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  min-width: 54px;
+  height: 54px;
+  padding: 0 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-family: var(--onpoint-font-two);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--onpoint-black);
+  border-radius: 8px;
+  background-color: #F6F7F9;
+  border: 1px solid #E2E5EA;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.form-captcha__symbol,
+.form-captcha__equals {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  font-family: var(--onpoint-font-two);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--onpoint-gray);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.form-captcha__input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 120px;
+  flex: 1 1 120px;
+  min-width: 0;
+  height: 54px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+  font-family: var(--onpoint-font);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  color: var(--onpoint-black);
+  border-radius: 8px;
+  background-color: #F6F7F9;
+  border: 1px solid #E2E5EA;
+  -webkit-transition: border-color 300ms ease, background-color 300ms ease;
+  transition: border-color 300ms ease, background-color 300ms ease;
+}
+
+/* without these the global "::placeholder { color: inherit }" makes the hint
+   as dark as the answer the visitor types */
+.form-captcha__input::-webkit-input-placeholder {
+  color: rgba(var(--onpoint-gray-rgb), .55);
+  font-size: 15px;
+}
+
+.form-captcha__input::-moz-placeholder {
+  color: rgba(var(--onpoint-gray-rgb), .55);
+  font-size: 15px;
+}
+
+.form-captcha__input:-ms-input-placeholder {
+  color: rgba(var(--onpoint-gray-rgb), .55);
+  font-size: 15px;
+}
+
+.form-captcha__input::placeholder {
+  color: rgba(var(--onpoint-gray-rgb), .55);
+  font-size: 15px;
+}
+
+.form-captcha__input:focus {
+  background-color: var(--onpoint-white);
+  border-color: var(--onpoint-base);
+}
+
+.form-captcha__refresh {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--onpoint-gray);
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #F6F7F9;
+  border: 1px solid #E2E5EA;
+  -webkit-transition: color 300ms ease, border-color 300ms ease;
+  transition: color 300ms ease, border-color 300ms ease;
+}
+
+.form-captcha__refresh:hover {
+  color: var(--onpoint-base);
+  border-color: var(--onpoint-base);
+}
+
+.form-captcha__error {
+  display: none;
+  margin: 8px 0 0;
+  font-size: 15px;
+  line-height: 24px;
+  color: #C22626;
+}
+
+.form-captcha__error.is-visible {
+  display: block;
+}
+
+/* keep the whole sum on one line on phones */
+@media (max-width: 575px) {
+  .form-captcha__row {
+    gap: 8px;
+  }
+
+  .form-captcha__cell {
+    min-width: 46px;
+    height: 50px;
+    padding: 0 8px;
+    font-size: 18px;
+  }
+
+  .form-captcha__symbol,
+  .form-captcha__equals {
+    font-size: 18px;
+  }
+
+  .form-captcha__input {
+    -ms-flex: 1 1 70px;
+    flex: 1 1 70px;
+    height: 50px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .form-captcha__refresh {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* the offcanvas sidebar is a narrow dark panel, so the captcha goes light-on-dark
+   and shrinks enough to keep the whole sum on one line */
+.xs-sidebar-group .form-captcha__label {
+  color: var(--onpoint-white);
+}
+
+.xs-sidebar-group .form-captcha__row {
+  gap: 8px;
+}
+
+.xs-sidebar-group .form-captcha__cell {
+  min-width: 46px;
+  height: 50px;
+  padding: 0 8px;
+  font-size: 18px;
+  color: var(--onpoint-black);
+  background-color: var(--onpoint-white);
+  border: none;
+  border-radius: 0;
+}
+
+.xs-sidebar-group .form-captcha__symbol,
+.xs-sidebar-group .form-captcha__equals {
+  font-size: 18px;
+  color: var(--onpoint-white);
+}
+
+.xs-sidebar-group .form-captcha__input {
+  -ms-flex: 1 1 60px;
+  flex: 1 1 60px;
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #848484;
+  background-color: var(--onpoint-white);
+  border: none;
+  border-radius: 0;
+}
+
+.xs-sidebar-group .form-captcha__input:focus {
+  border: none;
+}
+
+.xs-sidebar-group .form-captcha__refresh {
+  width: 50px;
+  height: 50px;
+  color: var(--onpoint-black);
+  background-color: var(--onpoint-white);
+  border: none;
+  border-radius: 0;
+}
+
+.xs-sidebar-group .form-captcha__refresh:hover {
+  color: var(--onpoint-base);
+}
+
+.xs-sidebar-group .form-captcha__error {
+  color: #FF8787;
+}
+
+/* feedback messages also sit on the dark panel */
+.xs-sidebar-group .result .inner {
+  padding: 12px 16px;
+  background-color: rgba(var(--onpoint-white-rgb), .08);
+  border-color: rgba(var(--onpoint-white-rgb), .25);
+}
+
+.xs-sidebar-group .result .inner p,
+.xs-sidebar-group .result .inner.info p,
+.xs-sidebar-group .result .inner.sending p {
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--onpoint-white);
+}
+
+.xs-sidebar-group .result .inner.success p {
+  color: #8CE9B8;
+}
+
+.xs-sidebar-group .result .inner.error p {
+  color: #FF8787;
+}
+
 /* form feedback -- shared by every contact / quote form on the site */
 .result .inner {
   position: relative;
@@ -6276,6 +6568,15 @@ ul {
 
 .result .inner.sending p {
   color: var(--onpoint-gray);
+}
+
+.result .inner.info {
+  background-color: rgba(var(--onpoint-base-rgb), .06);
+  border: 1px solid rgba(var(--onpoint-base-rgb), .3);
+}
+
+.result .inner.info p {
+  color: var(--onpoint-base);
 }
 
 .result .inner.success {

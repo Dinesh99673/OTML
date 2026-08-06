@@ -384,6 +384,141 @@
     );
   }
 
+  // --- captcha ---------------------------------------------------------------
+  // A small sum the visitor solves before an enquiry is sent. It is built by
+  // script rather than markup, so every form picks it up without editing pages.
+
+  var CAPTCHA_OPERATORS = ["+", "-", "*"];
+  var captchaCount = 0;
+
+  function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // Subtraction is always ordered larger-minus-smaller so the answer is never
+  // negative, and the operands stay single digit to keep the sum easy.
+  function makeCaptchaSum() {
+    var operator = CAPTCHA_OPERATORS[randomInt(0, CAPTCHA_OPERATORS.length - 1)];
+    var left = randomInt(2, 9);
+    var right = randomInt(1, 9);
+
+    if (operator === "-") {
+      right = randomInt(1, left - 1);
+      return { left: left, right: right, symbol: "−", answer: left - right };
+    }
+
+    if (operator === "*") {
+      return { left: left, right: right, symbol: "×", answer: left * right };
+    }
+
+    return { left: left, right: right, symbol: "+", answer: left + right };
+  }
+
+  function setCaptchaError(captcha, text) {
+    if (text) {
+      captcha.error.text(text).addClass("is-visible");
+    } else {
+      captcha.error.text("").removeClass("is-visible");
+    }
+  }
+
+  // Draws a fresh sum and clears whatever the visitor last typed.
+  function refreshCaptcha(captcha) {
+    var sum = makeCaptchaSum();
+
+    captcha.answer = sum.answer;
+    captcha.box.find(".form-captcha__left").text(sum.left);
+    captcha.box.find(".form-captcha__symbol").text(sum.symbol);
+    captcha.box.find(".form-captcha__right").text(sum.right);
+    captcha.input.val("");
+    setCaptchaError(captcha, "");
+  }
+
+  function buildCaptcha(thisForm) {
+    var inputId = "form-captcha-" + ++captchaCount;
+    var box = $(
+      '<div class="form-captcha">' +
+        '<label class="form-captcha__label" for="' + inputId + '">Captcha <span>*</span></label>' +
+        '<div class="form-captcha__row">' +
+          '<span class="form-captcha__cell form-captcha__left"></span>' +
+          '<span class="form-captcha__symbol"></span>' +
+          '<span class="form-captcha__cell form-captcha__right"></span>' +
+          '<span class="form-captcha__equals">=</span>' +
+          '<input type="text" id="' + inputId + '" class="form-captcha__input" placeholder="Validate." inputmode="numeric" autocomplete="off">' +
+          '<button type="button" class="form-captcha__refresh" aria-label="Show a different captcha question">' +
+            '<i class="fas fa-sync-alt"></i>' +
+          "</button>" +
+        "</div>" +
+        '<p class="form-captcha__error" role="alert"></p>' +
+      "</div>"
+    );
+
+    var captcha = {
+      box: box,
+      input: box.find(".form-captcha__input"),
+      error: box.find(".form-captcha__error"),
+      answer: 0,
+      visible: false
+    };
+
+    box.find(".form-captcha__refresh").on("click", function () {
+      refreshCaptcha(captcha);
+      captcha.input.trigger("focus");
+    });
+
+    // sits directly above whichever wrapper holds the submit button
+    thisForm.find('[type="submit"]').closest("div").before(box);
+    refreshCaptcha(captcha);
+
+    return captcha;
+  }
+
+  function getFormCaptcha(thisForm) {
+    var captcha = thisForm.data("mailerCaptcha");
+
+    if (!captcha) {
+      captcha = buildCaptcha(thisForm);
+      thisForm.data("mailerCaptcha", captcha);
+    }
+
+    return captcha;
+  }
+
+  // Returns true only when the visitor has solved the current sum. Anything else
+  // reveals or re-rolls the captcha and leaves the enquiry unsent.
+  function captchaPassed(thisForm, resultBox) {
+    var captcha = getFormCaptcha(thisForm);
+
+    if (!captcha.visible) {
+      captcha.visible = true;
+      captcha.box.addClass("is-visible");
+      refreshCaptcha(captcha);
+      showMailerResult(resultBox, "info", "Almost done — please solve the sum below, then press the button again.");
+      captcha.input.trigger("focus");
+      return false;
+    }
+
+    var given = $.trim(captcha.input.val() || "");
+
+    // the reveal prompt has served its purpose once the visitor answers
+    resultBox.empty();
+
+    if (!given) {
+      setCaptchaError(captcha, "Please answer the captcha before submitting.");
+      captcha.input.trigger("focus");
+      return false;
+    }
+
+    if (!/^\d+$/.test(given) || parseInt(given, 10) !== captcha.answer) {
+      refreshCaptcha(captcha);
+      setCaptchaError(captcha, "That answer was not correct. Please solve the new sum.");
+      captcha.input.trigger("focus");
+      return false;
+    }
+
+    return true;
+  }
+
   if ($(".contact-form-validated").length) {
     $(".contact-form-validated").each(function () {
       let self = $(this);
@@ -423,6 +558,11 @@
             return false;
           }
 
+          // First press reveals the captcha, the next one checks the answer.
+          if (!captchaPassed(thisForm, resultBox)) {
+            return false;
+          }
+
           var payload = {
             subject: formName + " from " + findMailerField(fields, "name").value,
             email: findMailerField(fields, "email").value,
@@ -445,6 +585,8 @@
                 "Thanks for contacting us. Our team will get back to you shortly."
               );
               form.reset();
+              // a sent enquiry must not leave a solved sum behind for the next one
+              refreshCaptcha(getFormCaptcha(thisForm));
               // the styled dropdown keeps the old label unless it is told to refresh
               if ($.fn.niceSelect) {
                 thisForm.find("select").niceSelect("update");
