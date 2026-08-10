@@ -1783,6 +1783,24 @@ ul {
   transform: scale(1.1);
 }
 
+/* Slide art that must be shown whole: scale it to the slide height, anchor it
+   right and fill the rest with the artwork's own background colour. The Ken
+   Burns zoom is cancelled here, otherwise it crops the art back off again. */
+.main-slider__bg--fit {
+  background-size: auto 100%;
+  background-position: right center;
+  background-color: #E7F0F5;
+}
+
+.main-slider .swiper-slide-active .main-slider__bg--fit {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.main-slider__bg--fit:before {
+  background: linear-gradient(90deg, rgba(15, 27, 36, 0.94) 0%, rgba(15, 27, 36, 0.88) 26%, rgba(15, 27, 36, 0) 55%);
+}
+
 .main-slider__shape-1 {
   position: absolute;
   top: -300px;
@@ -5938,6 +5956,19 @@ ul {
   bottom: 0;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.87) 24.4%, rgba(102, 102, 102, 0) 100%);
   border-radius: 50px;
+}
+
+/* Banner art that is taller than the header strip: scale it to the strip
+   height and anchor it right, filling the remaining width with the artwork's
+   own background colour instead of cropping the top and bottom off. */
+.page-header--fit .page-header__bg {
+  background-size: auto 100%;
+  background-position: right center;
+  background-color: #E7F0F5;
+}
+
+.page-header--fit .page-header__bg::before {
+  background: linear-gradient(90deg, rgba(15, 27, 36, 0.92) 0%, rgba(15, 27, 36, 0.86) 24%, rgba(15, 27, 36, 0) 52%);
 }
 
 .page-header__inner {
