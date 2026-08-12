@@ -1801,6 +1801,54 @@ ul {
   background: linear-gradient(90deg, rgba(15, 27, 36, 0.94) 0%, rgba(15, 27, 36, 0.88) 26%, rgba(15, 27, 36, 0) 55%);
 }
 
+/* Full-bleed photographic banner art (2:1). Cover keeps the aspect ratio and
+   fills the slide edge to edge; the Ken Burns zoom is cancelled so the crop
+   stays at the minimum the slide ratio forces. Anchored right so that when the
+   slide is narrower than 2:1 the crop eats the left of the art, which sits
+   under the copy gradient anyway, rather than the vessel and the logo. */
+.main-slider__bg--banner {
+  background-size: cover;
+  background-position: right center;
+  background-color: #BFE0F5;
+}
+
+.main-slider .swiper-slide-active .main-slider__bg--banner {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* The art is light, so the stock gradient leaves the headline low-contrast. */
+.main-slider__bg--banner:before {
+  background: linear-gradient(90deg, rgba(15, 27, 36, 0.92) 0%, rgba(15, 27, 36, 0.8) 30%, rgba(15, 27, 36, 0) 62%);
+}
+
+/* Same reason: the yellow/red blooms wash out light art, so damp them here. */
+.main-slider__bg--banner~.main-slider__shape-1,
+.main-slider__bg--banner~.main-slider__shape-2,
+.main-slider__bg--banner~.main-slider__shape-3,
+.main-slider__bg--banner~.main-slider__shape-4 {
+  opacity: 0.15;
+}
+
+/* Under 1200px the slide is narrower than the art, so the vessel is cropped in
+   behind the copy instead of sitting clear of it. Widen the scrim to suit. */
+@media only screen and (max-width: 1199px) {
+  .main-slider__bg--banner:before {
+    background: linear-gradient(90deg, rgba(15, 27, 36, 0.94) 0%, rgba(15, 27, 36, 0.86) 45%, rgba(15, 27, 36, 0.45) 100%);
+  }
+}
+
+/* On phones no horizontal window clears the logo baked into the top corner, so
+   it lands half-cut over the headline. Scale past the slide height and anchor
+   to the bottom instead: that drops the top third of the art, logo included,
+   and frames the hull and the swoosh. */
+@media only screen and (max-width: 767px) {
+  .main-slider__bg--banner {
+    background-size: auto 140%;
+    background-position: 42% bottom;
+  }
+}
+
 .main-slider__shape-1 {
   position: absolute;
   top: -300px;
